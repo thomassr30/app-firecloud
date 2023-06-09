@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { 
     Dimensions, 
@@ -12,8 +13,9 @@ import {
 } from 'react-native'
 
 const {height} = Dimensions.get('window')
+interface Props extends StackScreenProps<any, any>{}
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = ({navigation}: Props) => {
   return (
     <SafeAreaView style={styles.AndroidSafeArea}>
         <View style={styles.container}>
@@ -22,7 +24,7 @@ export const WelcomeScreen = () => {
                     height: height / 2.5
                 }}
                 resizeMode='contain'
-                source={require('../../assets/cb2sa.png')}
+                source={require('../../../assets/cb2sa.png')}
             />
             <View style={styles.textContainer}>
                 <Text style={styles.title}>
@@ -34,13 +36,19 @@ export const WelcomeScreen = () => {
                 </Text>
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.buttonLogin}>
+                <TouchableOpacity 
+                    style={styles.buttonLogin}
+                    onPress={() => navigation.navigate('LoginScreen')}
+                    >
                     <Text style={styles.textButtonLogin}>
                         Iniciar Sesión
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonRegister}>
+                <TouchableOpacity 
+                style={styles.buttonRegister}
+                onPress={() => navigation.navigate('RegisterScreen')}
+                >
                     <Text style={styles.textButtonRegister}>
                         Registrarme
                     </Text>
@@ -100,7 +108,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     textButtonRegister: {
-        color: '#000',
+        color: 'gray',
         textAlign: 'center',
         fontWeight: '600',
         fontSize: 20
