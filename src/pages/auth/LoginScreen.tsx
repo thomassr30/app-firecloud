@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         fontWeight: '700'
     },
     button: {
-        padding: 10 * 2,
+        padding: 15,
         backgroundColor: '#008781',
         borderRadius: 10,
         marginVertical: 10 * 2,
